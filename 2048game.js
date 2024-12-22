@@ -72,6 +72,8 @@ function updateProgressBar() {
 
 // 顯示遊戲結束訊息
 function displayFullScreenMessage(title, message) {
+    const a = document.querySelector("#fullscreen-overlay");
+    if(a) return;
     const overlay = document.createElement('div');
     overlay.id = 'fullscreen-overlay';
     overlay.style.cssText = `
