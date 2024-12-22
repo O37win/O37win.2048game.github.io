@@ -70,7 +70,6 @@ function updateProgressBar() {
     }
 }
 
-// 顯示遊戲結束訊息
 function displayFullScreenMessage(title, message) {
     const a = document.querySelector("#fullscreen-overlay");
     if(a) return;
@@ -82,7 +81,7 @@ function displayFullScreenMessage(title, message) {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.9);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -100,7 +99,7 @@ function displayFullScreenMessage(title, message) {
     messageElement.textContent = message;
 
     const button = document.createElement('button');
-    button.textContent = 'play again!';
+    button.textContent = '重新開始';
     button.style.cssText = `
         margin-top: 20px;
         padding: 10px 20px;
@@ -108,9 +107,7 @@ function displayFullScreenMessage(title, message) {
         cursor: pointer;
     `;
     button.addEventListener('click', () => {
-        overlay.style.display="none"; // 移除覆蓋層
-        titleElement.style.display = "none";
-        messageElement.style.display = "none";
+        overlay.remove(); // 移除覆蓋層
         grid = Array(gridSize).fill().map(() => Array(gridSize).fill(0));
         initGame(); // 開始新一局遊戲
         document.removeEventListener('keydown', handleKeydown); // 移除舊的事件監聽器
